@@ -12,7 +12,7 @@ void main() {
             },
             itemCount: 10)));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text("0", skipOffstage: false), findsOidget);
   });
 
   testWidgets('Default Swiper loop:false', (WidgetTester tester) async {
@@ -27,7 +27,7 @@ void main() {
       loop: false,
     )));
 
-    expect(find.text("0", skipOffstage: true), findsOneWidget);
+    expect(find.text("0", skipOffstage: true), findsOidget);
   });
 
   testWidgets('Create Swiper with children', (WidgetTester tester) async {
@@ -37,7 +37,7 @@ void main() {
       children: <Widget>[Text("0"), Text("1")],
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text("0", skipOffstage: false), findsOidget);
   });
 
   testWidgets('Create Swiper with list', (WidgetTester tester) async {
@@ -50,7 +50,7 @@ void main() {
       },
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text("0", skipOffstage: false), findsOidget);
   });
 
   testWidgets('Swiper with default plugins', (WidgetTester tester) async {
@@ -67,7 +67,7 @@ void main() {
       control: SwiperControl(),
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text("0", skipOffstage: false), findsOidget);
   });
 
   const List<String> titles = [
@@ -124,7 +124,7 @@ void main() {
     await controller.next(animation: false);
     await controller.previous(animation: false);
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text("0", skipOffstage: false), findsOidget);
   });
 
   testWidgets('Swiper fraction', (WidgetTester tester) async {
@@ -141,7 +141,7 @@ void main() {
       control: SwiperControl(),
     )));
 
-    expect(find.text("0", skipOffstage: false), findsOneWidget);
+    expect(find.text("0", skipOffstage: false), findsOidget);
   });
 
   testWidgets('Zero itemCount', (WidgetTester tester) async {

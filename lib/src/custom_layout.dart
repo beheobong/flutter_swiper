@@ -12,7 +12,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
   @override
   void initState() {
     if (widget.itemWidth == null) {
-      throw new Exception(
+      throw  Exception(
           "==============\n\nwidget.itemWith must not be null when use stack layout.\n========\n");
     }
 
@@ -22,8 +22,8 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
   }
 
   void _createAnimationController() {
-    _animationController = new AnimationController(vsync: this, value: 0.5);
-    Tween<double> tween = new Tween(begin: 0.0, end: 1.0);
+    _animationController =  AnimationController(vsync: this, value: 0.5);
+    Tween<double> tween =  Tween(begin: 0.0, end: 1.0);
     _animation = tween.animate(_animationController);
   }
 
@@ -80,7 +80,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
   Widget _buildItem(int i, int realIndex, double animationValue);
 
   Widget _buildContainer(List<Widget> list) {
-    return new Stack(
+    return  Stack(
       children: list,
     );
   }
@@ -100,13 +100,13 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
       list.add(_buildItem(i, realIndex, animationValue));
     }
 
-    return new GestureDetector(
+    return  GestureDetector(
       behavior: HitTestBehavior.opaque,
       onPanStart: _onPanStart,
       onPanEnd: _onPanEnd,
       onPanUpdate: _onPanUpdate,
-      child: new ClipRect(
-        child: new Center(
+      child:  ClipRect(
+        child:  Center(
           child: _buildContainer(list),
         ),
       ),
@@ -116,9 +116,9 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
   @override
   Widget build(BuildContext context) {
     if (_animationCount == null) {
-      return new Container();
+      return  Container();
     }
-    return new AnimatedBuilder(
+    return  AnimatedBuilder(
         animation: _animationController, builder: _buildAnimation);
   }
 
@@ -132,7 +132,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
     try {
       _lockScroll = true;
       await _animationController.animateTo(position,
-          duration: new Duration(milliseconds: widget.duration),
+          duration:  Duration(milliseconds: widget.duration),
           curve: widget.curve);
       if (nextIndex != null) {
         widget.onIndexChanged(widget.getCorrectIndex(nextIndex));
@@ -182,7 +182,7 @@ abstract class _CustomLayoutStateBase<T extends _SubSwiper> extends State<T>
         _move(0.0, nextIndex: nextIndex);
         break;
       case IndexController.MOVE:
-        throw new Exception(
+        throw  Exception(
             "Custom layout does not support SwiperControllerEvent.MOVE_INDEX yet!");
       case SwiperController.STOP_AUTOPLAY:
       case SwiperController.START_AUTOPLAY:
@@ -277,7 +277,7 @@ Offset _getOffsetValue(List<Offset> values, double animationValue, int index) {
       dy = dy - (dy - values[index - 1].dy) * (0.5 - animationValue) * 2.0;
     }
   }
-  return new Offset(dx, dy);
+  return  Offset(dx, dy);
 }
 
 abstract class TransformBuilder<T> {
@@ -293,7 +293,7 @@ class ScaleTransformBuilder extends TransformBuilder<double> {
 
   Widget build(int i, double animationValue, Widget widget) {
     double s = _getValue(values, animationValue, i);
-    return new Transform.scale(scale: s, child: widget);
+    return  Transform.scale(scale: s, child: widget);
   }
 }
 
@@ -302,7 +302,7 @@ class OpacityTransformBuilder extends TransformBuilder<double> {
 
   Widget build(int i, double animationValue, Widget widget) {
     double v = _getValue(values, animationValue, i);
-    return new Opacity(
+    return  Opacity(
       opacity: v,
       child: widget,
     );
@@ -314,7 +314,7 @@ class RotateTransformBuilder extends TransformBuilder<double> {
 
   Widget build(int i, double animationValue, Widget widget) {
     double v = _getValue(values, animationValue, i);
-    return new Transform.rotate(
+    return  Transform.rotate(
       angle: v,
       child: widget,
     );
@@ -327,7 +327,7 @@ class TranslateTransformBuilder extends TransformBuilder<Offset> {
   @override
   Widget build(int i, double animationValue, Widget widget) {
     Offset s = _getOffsetValue(values, animationValue, i);
-    return new Transform.translate(
+    return  Transform.translate(
       offset: s,
       child: widget,
     );
@@ -343,23 +343,23 @@ class CustomLayoutOption {
       : assert(startIndex != null, stateCount != null);
 
   CustomLayoutOption addOpacity(List<double> values) {
-    builders.add(new OpacityTransformBuilder(values: values));
+    builders.add( OpacityTransformBuilder(values: values));
     return this;
   }
 
   CustomLayoutOption addTranslate(List<Offset> values) {
-    builders.add(new TranslateTransformBuilder(values: values));
+    builders.add( TranslateTransformBuilder(values: values));
     return this;
   }
 
   CustomLayoutOption addScale(List<double> values, Alignment alignment) {
     builders
-        .add(new ScaleTransformBuilder(values: values, alignment: alignment));
+        .add( ScaleTransformBuilder(values: values, alignment: alignment));
     return this;
   }
 
   CustomLayoutOption addRotate(List<double> values) {
-    builders.add(new RotateTransformBuilder(values: values));
+    builders.add( RotateTransformBuilder(values: values));
     return this;
   }
 }
@@ -398,7 +398,7 @@ class _CustomLayoutSwiper extends _SubSwiper {
 
   @override
   State<StatefulWidget> createState() {
-    return new _CustomLayoutState();
+    return  _CustomLayoutState();
   }
 }
 
@@ -421,7 +421,7 @@ class _CustomLayoutState extends _CustomLayoutStateBase<_CustomLayoutSwiper> {
   Widget _buildItem(int index, int realIndex, double animationValue) {
     List<TransformBuilder> builders = widget.option.builders;
 
-    Widget child = new SizedBox(
+    Widget child =  SizedBox(
         width: widget.itemWidth ?? double.infinity,
         height: widget.itemHeight ?? double.infinity,
         child: widget.itemBuilder(context, realIndex));

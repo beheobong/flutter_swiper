@@ -33,34 +33,34 @@ class FractionPaginationBuilder extends SwiperPlugin {
     Color color = this.color ?? themeData.scaffoldBackgroundColor;
 
     if (Axis.vertical == config.scrollDirection) {
-      return new Column(
+      return  Column(
         key: key,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          new Text(
+           Text(
             "${config.activeIndex + 1}",
             style: TextStyle(color: activeColor, fontSize: activeFontSize),
           ),
-          new Text(
+           Text(
             "/",
             style: TextStyle(color: color, fontSize: fontSize),
           ),
-          new Text(
+           Text(
             "${config.itemCount}",
             style: TextStyle(color: color, fontSize: fontSize),
           )
         ],
       );
     } else {
-      return new Row(
+      return  Row(
         key: key,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          new Text(
+           Text(
             "${config.activeIndex + 1}",
             style: TextStyle(color: activeColor, fontSize: activeFontSize),
           ),
-          new Text(
+           Text(
             " / ${config.itemCount}",
             style: TextStyle(color: color, fontSize: fontSize),
           )
@@ -127,13 +127,13 @@ class RectSwiperPaginationBuilder extends SwiperPlugin {
     }
 
     if (config.scrollDirection == Axis.vertical) {
-      return new Column(
+      return  Column(
         key: key,
         mainAxisSize: MainAxisSize.min,
         children: list,
       );
     } else {
-      return new Row(
+      return  Row(
         key: key,
         mainAxisSize: MainAxisSize.min,
         children: list,
@@ -185,7 +185,7 @@ class DotSwiperPaginationBuilder extends SwiperPlugin {
 
     if (config.indicatorLayout != PageIndicatorLayout.NONE &&
         config.layout == SwiperLayout.DEFAULT) {
-      return new PageIndicator(
+      return  PageIndicator(
         count: config.itemCount,
         controller: config.pageController,
         layout: config.indicatorLayout,
@@ -217,13 +217,13 @@ class DotSwiperPaginationBuilder extends SwiperPlugin {
     }
 
     if (config.scrollDirection == Axis.vertical) {
-      return new Column(
+      return  Column(
         key: key,
         mainAxisSize: MainAxisSize.min,
         children: list,
       );
     } else {
-      return new Row(
+      return  Row(
         key: key,
         mainAxisSize: MainAxisSize.min,
         children: list,
@@ -283,7 +283,7 @@ class SwiperPagination extends SwiperPlugin {
       child: this.builder.build(context, config),
     );
     if (!config.outer) {
-      child = new Align(
+      child =  Align(
         key: key,
         alignment: alignment,
         child: child,
