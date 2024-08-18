@@ -1,84 +1,114 @@
+# Changelog
 
-## [1.1.5] - [2019/03/10]
+All notable changes to this project will be documented in this file.
 
- * Fix findRenderObject is null
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
 
-## [1.1.4] - [2018/10/18]
+### Added
 
-## [1.1.2] - [2018/10/10]
-    * Fix #7
-    * Support layout for pagination.
+### Changed
 
-## [1.1.1] - [2018/09/20]
-    * Fix `test` failure.
+### Deprecated
 
-## [1.1.0] - [2018/09/20]
-    * Fix index bug ,See #11
-    * Enable `autoplayDisableOnInteraction` property, if set `true`,disable autoplay when user swipes.
+### Removed
 
-## [1.0.7] - [2018/09/02]
-    * Don't call SwiperController's dispose when `Swiper` dispose.
+### Fixed
 
-## [1.0.6] - [2018/08/28]
-    * Implement vertical scroll direction for `TINDER` and `STACK` layout, see #9
+### Security
 
-## [1.0.5] - [2018/08/09]
-    * Add feature : support fade for `viewportFraction`
+## [3.0.1] - 2023-07-09
 
-## [1.0.4] - [2018/07/18]
-    * Fix some typo,thanks to [csharad](https://github.com/csharad)
+### Changed
+- README update
 
-## [1.0.3] - [2018/07/18]
-    * Use new to create everything. See #5
+## [3.0.0] - 2023-07-09
 
-## [1.0.2] - [2018/07/16]
-    * Fix #4
+### Fixed
 
-## [1.0.1] - [2018/07/11]
-    * Add layout (CUSTOM) so that you can create your own layout
+- [PR#59](https://github.com/TheAnkurPanchani/card_swiper/pull/59): hide items at the end of swiper if it's not looping
+- [PR#69](https://github.com/TheAnkurPanchani/card_swiper/pull/69): Fix STACK and TINDER auto wheel casting direction issues
+- [Issue#34](https://github.com/TheAnkurPanchani/card_swiper/issues/34): SwiperLayout.CUSTOM layout is not working as expected
+- [Issue#52](https://github.com/TheAnkurPanchani/card_swiper/issues/52): loop is not working
+- [Issue#62](https://github.com/TheAnkurPanchani/card_swiper/issues/62): Can I remove fake cards?
 
-## [1.0.0] - [2018/07/08]
-    * Add layouts ( DEFAULT,STACK,TINDER )
-    * Allow to put pagination outer of the swiper container.
+## [2.0.4] - 2022-06-05
 
-## [0.0.9] - [2018/06/10]
-    * Add ci
-    * Add testcase
+### Fixed
 
-## [0.0.8] - [2018/06/07]
-    * And chinese document
-    * Update infinity_page_view version to 1.0.0
+- [PR#46](https://github.com/TheAnkurPanchani/card_swiper/pull/46): `dart fix --apply` to support Flutter SDK 3.0
+- [Issue#47](https://github.com/TheAnkurPanchani/card_swiper/issues/47): cant work flutter 3.0
+- [Issue#48](https://github.com/TheAnkurPanchani/card_swiper/issues/48): Not supported for Flutter 3.0
+- [Issue#49](https://github.com/TheAnkurPanchani/card_swiper/issues/49): 建议升级一下3.0
+- [Issue#50](https://github.com/TheAnkurPanchani/card_swiper/issues/50): not supporting v3 flutter
 
-## [0.0.7] - [2018/05/24]
-    * The default color of pagination is ThemeData.scaffoldBackgroundColor and ThemeData.primaryColor
-    * The default color of control buttons is ThemeData.primaryColor and ThemeData.disabledColor
-    * The alignment of pagination is Alignment.bottomCenter by default when scrollDirection== Axis.horizontal, Alignment.centerRight by default when scrollDirection== Axis.vertical
-    * Change default value of `autoplay` to false
+## [2.0.3] - 2022-03-13
 
-## [0.0.6] - [2018/05/24]
-    * Fix index bug
-        
-## [0.0.5] - [2018/05/24]
-    * Fix zero itemCount bug
+### Added
 
-## [0.0.4] - [2018/05/20]
-    * Update README
+- [PR#29](https://github.com/TheAnkurPanchani/card_swiper/pull/29): Add allowImplicitScrolling property
 
-## [0.0.3] - [2018/05/20]
-    * Update README
-    * Support none loop mode
-    * Add more examples
+### Fixed
 
-## [0.0.2] - [2018/05/20]
-    * Autoplay
-    * Plugins support 
-    * Examples
+- [PR#28](https://github.com/TheAnkurPanchani/card_swiper/pull/28): make page indicators respect the initial page index
 
-## [0.0.1] - [2018/05/20]
-    * Infinite loop
-    * Control buttons
-    * Pagination
-    * Custom control buttons
-    * Custom pagination
-    * Controler
+## [2.0.2] - 2022-03-13
+
+### Fixed
+
+- [Issue#12](https://github.com/TheAnkurPanchani/card_swiper/issues/12): Use default pagination only if value is not provided
+- [Issue#15](https://github.com/TheAnkurPanchani/card_swiper/issues/15): Put item count check before building animation
+- [Issue#24](https://github.com/TheAnkurPanchani/card_swiper/issues/24): Put mounted check on post-frame callbacks
+- [Issue#30](https://github.com/TheAnkurPanchani/card_swiper/issues/30): Fix order for right direction of stack layout
+- [Issue#31](https://github.com/TheAnkurPanchani/card_swiper/issues/31): Update README for custom layout options
+- [Issue#32](https://github.com/TheAnkurPanchani/card_swiper/issues/32): Update README to mention how to not get default controls and pagination
+
+## [2.0.1] - 2022-01-11
+
+### Added
+
+- [Issue#3](https://github.com/TheAnkurPanchani/card_swiper/issues/3): Support `AxisDirection` left and right for Stack layout
+
+### Fixed
+
+- Fix pan event index update for custom layout
+
+## [2.0.0] - 2022-01-09
+
+### Changed
+
+- [PR#17](https://github.com/TheAnkurPanchani/card_swiper/pull/17): Migrate from `pedantic` to `flutter_lints_plus` and fix problems related to lint
+
+## [1.0.4] - 2021-08-06
+
+### Fixed
+
+- Initial index should set from controller is provided in parameter
+- Update readme
+
+## [1.0.3] - 2021-08-06
+
+### Fixed
+
+- Initial index should set from controller is provided in parameter
+
+## [1.0.2] - 2017-06-20
+
+### Fixed
+
+- README text and references
+- Library name
+- Example reference
+- Format according to dartfmt
+
+## [1.0.1] - 2017-06-20
+
+### Fixed
+
+- Format according to dartfmt
+
+## [1.0.0] - 2017-06-20
+
+- First release after fork
