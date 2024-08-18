@@ -66,6 +66,7 @@ class Swiper extends StatefulWidget {
     this.containerHeight,
     this.containerWidth,
     this.viewportFraction = 1.0,
+    this.scaleCenter = 1.0,
     this.itemHeight,
     this.itemWidth,
     this.outer = false,
@@ -239,6 +240,8 @@ class Swiper extends StatefulWidget {
 
   // This value is valid when viewportFraction is set and < 1.0
   final double? scale;
+
+  final double scaleCenter;
 
   // This value is valid when viewportFraction is set and < 1.0
   final double? fade;
@@ -507,8 +510,11 @@ class _SwiperState extends _SwiperTimerMixin {
       //default
       var transformer = widget.transformer;
       if (widget.scale != null || widget.fade != null) {
-        transformer =
-            ScaleAndFadeTransformer(scale: widget.scale, fade: widget.fade);
+        transformer = ScaleAndFadeTransformer(
+          scale: widget.scale,
+          fade: widget.fade,
+          scaleCenter: widget.scaleCenter,
+        );
       }
 
       final child = TransformerPageView(
@@ -968,12 +974,17 @@ class _StackViewState extends _CustomLayoutStateBase<_StackSwiper> {
 }
 
 class ScaleAndFadeTransformer extends PageTransformer {
-  ScaleAndFadeTransformer({double? fade = 0.3, double? scale = 0.8})
-      : _fade = fade,
+  ScaleAndFadeTransformer({
+    double? fade = 0.3,
+    double? scale = 0.8,
+    double scaleCenter = 0.0,
+  })  : _fade = fade,
+        _scaleCenter = scaleCenter,
         _scale = scale;
 
   final double? _scale;
   final double? _fade;
+  final double _scaleCenter;
 
   @override
   Widget transform(Widget child, TransformInfo info) {
@@ -981,7 +992,11 @@ class ScaleAndFadeTransformer extends PageTransformer {
     var c = child;
     if (_scale != null) {
       final scaleFactor = (1 - position!.abs()) * (1 - _scale!);
-      final scale = _scale! + scaleFactor;
+      var scale = _scale! + scaleFactor;
+
+      if (position < 0.4 && position > -0.4) {
+        scale = _scaleCenter;
+      }
 
       c = Transform.scale(
         scale: scale,
